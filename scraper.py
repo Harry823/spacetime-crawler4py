@@ -1,3 +1,5 @@
+from lxml import etree
+from io import StringIO, BytesIO
 import re
 from urllib.parse import urlparse
 
@@ -7,6 +9,9 @@ def scraper(url, resp):
 
 def extract_next_links(url, resp):
     # Implementation requred.
+    html = etree.HTML(resp.raw_response.content)
+    result = etree.tostring(html, pretty_print=True,method="html")
+    print(result)
     return list()
 
 def is_valid(url):
